@@ -12,33 +12,23 @@ var types = {
 $(document).ready(function(){
 
 	$.mobile.page.prototype.options.addBackBtn= true;
-/*
-$('#gHome').live('pageLoad', function(){
-		var logoHTML='<div class="logoImage"><img width="300px" id="logo" src="Images/GuideHax.png"/></div>';
-		$('.ui-page&ui-body-null).before(logoHTML);
-	});
-*/
-    $('#clickLoL').click(function(){
+
+    $('#clickTop').click(function(){
      window.location=$(this).find('a').attr('href');
      return false;
     });
     
-    $('#clickWoW').click(function(){
+    $('#clickMid').click(function(){
      window.location=$(this).find('a').attr('href');
      return false;
     });
     
-    $('#clickSky').click(function(){
+    $('#clickBot').click(function(){
      window.location=$(this).find('a').attr('href');
      return false;
     });
     
-    $('#clickTQ').click(function(){
-     window.location=$(this).find('a').attr('href');
-     return false;
-    });
-   
-    $('#clickMC').click(function(){
+    $('#clickJungle').click(function(){
      window.location=$(this).find('a').attr('href');
      return false;
     });
@@ -90,11 +80,18 @@ $('#gHome').live('pageLoad', function(){
 		};
     });
     
-    $('#bELO').click(function(){
-	    if ($('#bELO').is(':checked')){
-	    	$('#bSlide').show()
-    	} else {
-			$('#bSlide').hide()
-		};
-    });
+    
+	    $.getJSON('JS/JSON.js', function(data) {
+			var filler = [];
+			
+			$.each(data, function(key, val) {
+				items.push('<li id="' + key + '">' + val + '</li>');
+			});
+			
+			$('<ul/>', {
+				'class': 'my-new-list',
+				html: items.join('')
+			}).appendTo('body');
+		});
+	});
 });
