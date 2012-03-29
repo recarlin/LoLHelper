@@ -1,13 +1,6 @@
 // Russell Carlin
 // ASD 1204
 // Project 1
-var types = {
-        LoL:['Bruiser', 'AP Carry', 'AD Carry', 'Support', 'Jungle'],
-        WoW:['Death Knight', 'Druid', 'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'],
-        Skyrim:['Caster', 'Melee', 'Ranger', 'Stealth', 'Tank'],
-        MC: ['Redstone', 'Builds', 'Servers', 'Textures', 'Adventure'],
-        TQ: ['Earth', 'Defense', 'Dream', 'Hunting', 'Nature', 'Rogue', 'Spirit', 'Storm', 'Warfare']
-};
 
 $(document).ready(function(){
 
@@ -42,28 +35,8 @@ $(document).ready(function(){
     	$('#gType').selectmenu('refresh', true);
     });
     
-    $('#bGame').change(function() {
-    	var x= $('#bGame').val()
-    	$('#bType option').not('#default').remove()
-        for(index in types[x]) {
-        	$('#bType').append('<option value="' + types[x][index] + '">' + types[x][index] + '</option>')
-        };
-    	$('#bType').selectmenu('refresh', true);
-    });
-    
     $('#gGuideForm').validate({
     	invalidHandler: function(form, validator){},
-    	submitHandler: function(){
-    		alert('Guide saved!');
-    		location.reload();
-    	}
-    });
-    
-    $('#bGuideForm').validate({
-    	invalidHandler: function(form, validator){
-    		alert('Error saving guide.');
-    		location.reload();
-    	},
     	submitHandler: function(){
     		alert('Guide saved!');
     		location.reload();
@@ -80,7 +53,7 @@ $(document).ready(function(){
 		};
     });
     
-    $('#browser').bind('pageshow', function(){
+    $('#browser').bind('pagebeforeshow', function(){
 	    $.getJSON('JS/filler.json', function(data){
 			$.each(data, function(id, info){
 				$('<ul/>', {html: id + ': ', 'data-role':'listview'}).appendTo('#display');
@@ -88,7 +61,7 @@ $(document).ready(function(){
 					$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
 				});
 			});
-		}); 
-		return false;
+		});
+		$('#display ul').listview('refresh');
 	});
 });
