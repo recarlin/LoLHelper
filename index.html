@@ -28,7 +28,7 @@
 </head>
 <body>
 
-	<div data-role="page" id="bHome" class="mPage">
+	<div data-role="page" id="home" class="mPage">
 		<div data-role="header">
 			<h1>Home</h1>
 		</div>
@@ -38,35 +38,37 @@
 		
 		<div data-role="content">
 			<div id="bCTA" class="centerText">
-				<a id="startButton" href="#gBuilder" data-role="button" title="Click to Start">Click to Start</a>
+				<a id="startButton" href="#rosterAdd" data-role="button" title="Click to Start">Click to add champion!</a>
 			</div>
 
 			<h3>Browse:</h3>
 			<fieldset style="text-align:center" class="ui-grid-a">
+				
 				<div id="clickTop" class="ui-block-a">
 					<a data-role="button" href="#browser">
 						<img src="Images/Icon_TQ.png"/>
 					</a>
-					<p>Top Lane</p>
+					<p>Your Roster</p>
 				</div>
 				<div id="clickMid" class="ui-block-b">
 					<a data-role="button" href="#browser">
 						<img src="Images/Icon_MC.png"/>
 					</a>
-					<p>Middle Lane</p>
-				</div>
-				<div id="clickBot" class="ui-block-a">
-					<a data-role="button" href="#browser">
-						<img src="Images/Icon_WoW.png"/>
-					</a>
-					<p>Bottom Lane</p>
+					<p>Counter Picks</p>
 				</div>
 				<div id="clickJungle" class="ui-block-b">
 					<a data-role="button" href="#browser">
 						<img src="Images/Icon_Sky.png"/>
 					</a>
-					<p>Jungle</p>
+					<p>Jungle Timers</p>
 				</div>
+				<div id="clickBot" class="ui-block-a">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_WoW.png"/>
+					</a>
+					<p>Bottom Teams</p>
+				</div>
+				
 			</fieldset>
 		</div>
 		
@@ -88,11 +90,10 @@
 		</div>
 	</div>
 			
-	<div data-role="page" id="gBuilder" class="mPage">
+	<div data-role="page" id="rosterAdd" class="mPage">
 		<div data-role="header" data-position="inline">
-			<a data-role="button" href="#gHome" data-direction="reverse" data-icon="home">Home</a>
-			<h1>Good Builder</h1>
-			<a data-role="button" data-transition="slidedown" data-icon="star" data-iconpos="right" href="#bBuilder">Swap</a>
+			<h1>Roster Builder</h1>
+			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
 		</div>
 		<div class="logoImage">
 			<img width="300px" id="logo" src="Images/GuideHax.png"/>
@@ -100,43 +101,39 @@
 
 		<div data-role="content">
 			<div class="centerText">
-				<h2>Start your guide below</h2>
+				<h3>Fill out the champion information to add to your roster</h3>
 			</div>
-			<form action="" method="post" id="gGuideForm">
+			<form action="" method="post" id="rosterForm">
 
 					<div data-role="fieldcontain">
-						<label for="game">Game:</label>
+						<label for="game">Champion:</label>
 						<select name="game" id="gGame" data-native-menu="false" class="required">
-							<option data-placeholder="true" value="">First, select a game</option>
-							<option value="LoL">League of legends</option>
-							<option value="WoW">World of Warcraft</option>
-							<option value="Skyrim">Skyrim</option>
-							<option value="MC">Minecraft</option>
-							<option value="TQ">Titan Quest</option>
+							<option data-placeholder="true" value="">Select a Champion</option>
+							<option value="teemo">Teemo</option>
 						</select>
 						
-						<label for="type">Category:</label>
-						<select name="type" id="gType" data-native-menu="false" class="required">
-							<option id="default" data-placeholder="true" value="">Then, select a category</option>
+						<label for="game">Lane:</label>
+						<select name="game" id="gGame" data-native-menu="false" class="required">
+							<option data-placeholder="true" value="">Select Lane:</option>
+							<option value="top">Top</option>
+							<option value="mid">Middle</option>
+							<option value="bot">Bottom</option>
+							<option value="jungle">Jungle</option>
 						</select>
 					</div>
 					
 					<div data-role="fieldcontain">
-						<label for="title">Guide Title:</label>
-						<input name="title"id="title" type="text" class="required"/>
-						<div class="tooltip">Example: My Awesome Guide</div>
+						<label for="build">Build:</label>
+						<input name="build"id="build" type="text" class="required"/>
+						<div class="tooltip">Example: Boots, Wriggles, Wit's</div>
 						
-						<label for="author">Guide Author:</label>
-						<input name=" author" id="author" type="text" class="required"/>
-						<div class="tooltip">Preferably, use in-game names</div>
-					</div>
-					
-					<div data-role="fieldcontain">
-						<label id="c" for="content">Guide Content:</label>
-						<textarea id="content" placeholder="Please, type your guide" class="required"></textarea>
+						<label for="runePage">Rune Page:</label>
+						<input name="runePage" id="runePage" type="range" min="1" max="21" class="required"/>
+						<div class="tooltip">Rune Page generally used for this champion.</div>
 						
-						<label for="date">Date Created:</label>
-						<input name="date" id="date" type="date" data-role="datebox" placeholder="Tap the button to select a date" data-options='{"mode": "calbox", "disableManualInput": true}'/>
+						<label for="masteries">Masteries:</label>
+						<input name="masteries"id="masteries" type="text" class="required"/>
+						<div class="tooltip">Example: 21-9-0</div>
 					</div>
 										
 				<input type="submit" id="add" value="Save guide"/>
