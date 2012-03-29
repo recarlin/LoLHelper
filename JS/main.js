@@ -83,7 +83,7 @@ $(document).ready(function(){
     $('#browser').bind('pageshow', function(){
 	    $.getJSON('JS/filler.json', function(data){
 			$.each(data, function(id, info){
-				$('<ul/>', {html: id + ': '}).appendTo('#display');
+				$('<ul/>', {html: id + ': ', 'data-role':'listview'}).appendTo('#display');
 				$.each(info, function(key, value){
 					$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
 				});
