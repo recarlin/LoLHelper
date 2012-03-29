@@ -1,0 +1,37 @@
+{
+	"1":{
+	    "champ": "Teemo",
+	    "lane": "Top",
+	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "runes": "1",
+	    "masteries": "21-9-0"
+	},
+	"2":{
+	    "champ": "Teemo",
+	    "lane": "Top",
+	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "runes": "2",
+	    "masteries": "21-9-0"
+	},
+	"3":{
+	    "champ": "Teemo",
+	    "lane": "Top",
+	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "runes": "3",
+	    "masteries": "21-9-0"
+	},
+	"4":{
+	    "champ": "Teemo",
+	    "lane": "Top",
+	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "runes": "4",
+	    "masteries": "21-9-0"
+	},
+	"5":{
+	    "champ": "Teemo",
+	    "lane": "Top",
+	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "runes": "5",
+	    "masteries": "21-9-0"
+	}
+}

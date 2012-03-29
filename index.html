@@ -1,0 +1,154 @@
+<!doctype html>
+<!-- Russell Carlin -->
+<!-- ASD 1204 -->
+<!-- Project 1 -->
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<title>GuideHax</title>
+	<meta name="description" content="Application to assist users in creating a guide for their favorite video game."/>
+	<meta name="keywords" content="League of Legends, guide, application, World of Warcraft, Skyrim, Titan Quest"/>
+	<meta name="robots" content="index, follow" />
+	
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta http-equiv="cleartype" content="on"/>
+	
+	<link rel="stylesheet" href="CSS/GuideHax.min.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile.structure-1.0.1.min.css" /> 
+	<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css"/>
+	<link rel="stylesheet" href="CSS/style.css"/>
+
+	<script src="js/libs/modernizr.custom.min.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="bHome" class="mPage">
+		<div data-role="header">
+			<h1>Home</h1>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div data-role="content">
+			<div id="bCTA" class="centerText">
+				<a id="startButton" href="#gBuilder" data-role="button" title="Click to Start">Click to Start</a>
+			</div>
+
+			<h3>Browse:</h3>
+			<fieldset style="text-align:center" class="ui-grid-a">
+				<div id="clickTop" class="ui-block-a">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_TQ.png"/>
+					</a>
+					<p>Top Lane</p>
+				</div>
+				<div id="clickMid" class="ui-block-b">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_MC.png"/>
+					</a>
+					<p>Middle Lane</p>
+				</div>
+				<div id="clickBot" class="ui-block-a">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_WoW.png"/>
+					</a>
+					<p>Bottom Lane</p>
+				</div>
+				<div id="clickJungle" class="ui-block-b">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_Sky.png"/>
+					</a>
+					<p>Jungle</p>
+				</div>
+			</fieldset>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="browser" class="browser">
+		<div data-role="header">
+			<h1>Browser</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#bHome">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div data-role="content">
+			<ul data-role="listview" id="display">
+			
+			</ul>
+		</div>
+	</div>
+			
+	<div data-role="page" id="gBuilder" class="mPage">
+		<div data-role="header" data-position="inline">
+			<a data-role="button" href="#gHome" data-direction="reverse" data-icon="home">Home</a>
+			<h1>Good Builder</h1>
+			<a data-role="button" data-transition="slidedown" data-icon="star" data-iconpos="right" href="#bBuilder">Swap</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+
+		<div data-role="content">
+			<div class="centerText">
+				<h2>Start your guide below</h2>
+			</div>
+			<form action="" method="post" id="gGuideForm">
+
+					<div data-role="fieldcontain">
+						<label for="game">Game:</label>
+						<select name="game" id="gGame" data-native-menu="false" class="required">
+							<option data-placeholder="true" value="">First, select a game</option>
+							<option value="LoL">League of legends</option>
+							<option value="WoW">World of Warcraft</option>
+							<option value="Skyrim">Skyrim</option>
+							<option value="MC">Minecraft</option>
+							<option value="TQ">Titan Quest</option>
+						</select>
+						
+						<label for="type">Category:</label>
+						<select name="type" id="gType" data-native-menu="false" class="required">
+							<option id="default" data-placeholder="true" value="">Then, select a category</option>
+						</select>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="title">Guide Title:</label>
+						<input name="title"id="title" type="text" class="required"/>
+						<div class="tooltip">Example: My Awesome Guide</div>
+						
+						<label for="author">Guide Author:</label>
+						<input name=" author" id="author" type="text" class="required"/>
+						<div class="tooltip">Preferably, use in-game names</div>
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label id="c" for="content">Guide Content:</label>
+						<textarea id="content" placeholder="Please, type your guide" class="required"></textarea>
+						
+						<label for="date">Date Created:</label>
+						<input name="date" id="date" type="date" data-role="datebox" placeholder="Tap the button to select a date" data-options='{"mode": "calbox", "disableManualInput": true}'/>
+					</div>
+										
+				<input type="submit" id="add" value="Save guide"/>
+			</form>
+		</div>
+		
+	</div>
+	
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script src="JS/libs/jquery.validate.min.js"</script>
+	<script src="JS/json.js" type="text/javascript"></script>
+	<script src="JS/main.js" type="text/javascript"></script>
+</body>
+</html>
