@@ -1,6 +1,6 @@
 // Russell Carlin
-// MIU 1202
-// Project 4
+// ASD 1204
+// Project 1
 var types = {
         LoL:['Bruiser', 'AP Carry', 'AD Carry', 'Support', 'Jungle'],
         WoW:['Death Knight', 'Druid', 'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior'],
@@ -80,18 +80,15 @@ $(document).ready(function(){
 		};
     });
     
-    
-	    $.getJSON('JS/JSON.js', function(data) {
-			var filler = [];
-			
-			$.each(data, function(key, val) {
-				items.push('<li id="' + key + '">' + val + '</li>');
+    $('#browser').bind('pageshow', function(){
+	    $.getJSON('JS/filler.json', function(data){
+			$.each(data, function(id, info){
+				$('<ul/>', {html: id + ': '}).appendTo('#display');
+				$.each(info, function(key, value){
+					$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
+				});
 			});
-			
-			$('<ul/>', {
-				'class': 'my-new-list',
-				html: items.join('')
-			}).appendTo('body');
-		});
+		}); 
+		return false;
 	});
 });
