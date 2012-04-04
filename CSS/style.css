@@ -18,10 +18,10 @@ label.error{
 	color: red;
 }
 
-#gCTA, #bCTA{
+#bCTA{
 	width: 290px;
 	height: 200px;
-	background: url('../images/CTA.PNG');
+	/* background: url('../images/CTA.PNG'); */
 	background-size: 100%;
 	background-repeat: no-repeat;
 	position: relative;
