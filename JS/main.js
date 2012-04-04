@@ -2,7 +2,7 @@
 // ASD 1204
 // Project 2
 
-$('#home').live('pageinit', function(){
+$('#home').on('pageinit', function(){
 
 	$.mobile.page.prototype.options.addBackBtn= true;
 
@@ -11,15 +11,30 @@ $('#home').live('pageinit', function(){
      return false;
     });
     
-    $('#browser').on('pageinit', function(){
-	    $.getJSON('externalData/roster.json', function(data){
-			$.each(data, function(id, info){
-				$('<ul/>', {html: id + ': '}).appendTo('#display');
-				$.each(info, function(key, value){
-					$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
+    $('#roster').on('click', function(e){
+	    e.preventDefault();
+	    $.ajax({
+	    	url: 'xhr/roster.json',
+	    	type: 'GET',
+	    	dataType: 'json',
+	    	beforeSend: function(){
+	    		$.mobile.changePage("#browser")
+	    	},
+	    	error: function(){
+	    		$.mobile.changePage("#home")
+	    	},
+	    	success: function(data){
+	    		$('#display').empty();
+	    		$.each(data, function(id, info){
+					$('<ul/>', {html: info.champ + ': '}).appendTo('#display');
+					$.each(info, function(key, value){
+						$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
+					});
 				});
-			});
-		});
-		$('#display').listview('refresh');
+	    	},
+	    	complete: function(){
+	    		$('#display').listview('refresh');
+			}
+		}); 
 	});
 });
