@@ -56,7 +56,15 @@ $('#home').on('pageinit', function(){
 	    	},
 	    	success: function(d){
 	    		$('#display').empty();
-	    		console.log(d);
+	    		$(d).find('champion').each(function(){
+	    			var name = $(this).find('name').text(),
+	    				champs = $(this).find('champs').text(),
+	    				stats = $(this).find('stats').text();
+	    			$('<li/>', {html: name}).appendTo('#display');
+					$('#display li:last').append('<ul></ul>');
+					$('<li/>', {html: 'Champion Counters: ' + champs}).appendTo('#display ul:last');
+					$('<li/>', {html: 'Item Counters: ' + stats}).appendTo('#display ul:last');
+	    		});
 	    	},
 	    	complete: function(){
 	    		$('#contain ul').each(function(){

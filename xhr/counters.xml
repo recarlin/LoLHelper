@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <champions>	
-	<Riven>
+	<champion>
+		<name>Riven</name>
 		<champs>Olaf, Kennen, Udyr</champs>
 		<stats>Armor, Lifesteal, Spellvamp, Frozen Heart, Stuns</stats>
-	</Riven>
-	<LeBlanc>
+	</champion>
+	<champion>
+		<name>LeBlanc</name>
 		<champs>Galio, Sion, Morgana</champs>
 		<stats>Magic Resist, Banshee's Veil, Health, Stuns</stats>
-	</LeBlanc>
-	<Soraka>
+	</champion>
+	<champion>
+		<name>Soraka</name>
 		<champs>Miss Fortune, Tristana, Blitzcrank</champs>
 		<stats>Healing Debuff, Silence, Stuns</stats>
-	</Soraka>
-	<Caitlyn>
+	</champion>
+	<champion>
+		<name>Caitlyn</name>
 		<champs>Sivir, Tristana, Urgot</champs>
 		<stats>Armor, Lifesteal, Frozen Heart</stats>
-	</Caitlyn>
-	<Udyr>
+	</champion>
+	<champion>
+		<name>Udyr</name>
 		<champs>Ashe, Olaf, Trundle</champs>
 		<stats>Health, Magic Resist, Kiting</stats>
-	</Udyr>
+	</champion>
 </champions>
