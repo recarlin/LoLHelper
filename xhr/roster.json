@@ -1,37 +1,37 @@
 {
 	"1":{
-	    "champ": "Teemo",
-	    "lane": "Top",
-	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
-	    "runes": "1",
-	    "masteries": "21-9-0"
+	    "Champion": "Teemo",
+	    "Lane": "Top",
+	    "Build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "Runes": "1",
+	    "Masteries": "21-9-0"
 	},
 	"2":{
-	    "champ": "Teemo",
-	    "lane": "Top",
-	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
-	    "runes": "2",
-	    "masteries": "21-9-0"
+	    "Champion": "Poppy",
+	    "Lane": "Top",
+	    "Build": "Regrowth Pendant, Philosopher's Stone, Boots, Sheen, Trinity Force, Hextech Gunblade.",
+	    "Runes": "2",
+	    "Masteries": "9-21-0"
 	},
 	"3":{
-	    "champ": "Teemo",
-	    "lane": "Top",
-	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
+	    "Champion": "Dr. Mundo",
+	    "Lane": "Jungle",
+	    "Build": "Cloth Armor, Heart of Gold, Wriggle's Lantern, Spirit Visage, Warmog's Armor, Atma's Impaler.",
 	    "runes": "3",
-	    "masteries": "21-9-0"
+	    "masteries": "0-21-9"
 	},
 	"4":{
-	    "champ": "Teemo",
-	    "lane": "Top",
-	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
-	    "runes": "4",
-	    "masteries": "21-9-0"
+	    "Champion": "Ryze",
+	    "Lane": "Middle",
+	    "Build": "Mana Crystal, Tear of the Goddess, Boots, Catalyst, Banshee's Veil, Frozen Heart.",
+	    "Runes": "4",
+	    "Masteries": "9-0-21"
 	},
 	"5":{
-	    "champ": "Teemo",
-	    "lane": "Top",
-	    "build": "Boots, Wriggle's Lantern, Wit's End, Malady, Frozen Mallet, Madred's Bloodrazor.",
-	    "runes": "5",
-	    "masteries": "21-9-0"
+	    "Champion": "Sivir",
+	    "Lane": "Bottom",
+	    "Build": "Doran's Blade x2, Boots, Infinity Edge, Phantom Dancer, Bloodthirster.",
+	    "Runes": "5",
+	    "Masteries": "21-9-0"
 	}
 }

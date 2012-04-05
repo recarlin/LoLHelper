@@ -26,7 +26,7 @@ $('#home').on('pageinit', function(){
 	    	success: function(data){
 	    		$('#display').empty();
 	    		$.each(data, function(id, info){
-					$('<li/>', {html: info.champ + ': '}).appendTo('#display');
+					$('<li/>', {html: info.Champion}).appendTo('#display');
 					$('#display li:last').append('<ul></ul>');
 					$.each(info, function(key, value){
 						$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');

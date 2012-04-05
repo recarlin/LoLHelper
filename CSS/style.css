@@ -1,7 +1,7 @@
 /*
  Russell Carlin
- MIU 1202
- Project 4
+ ASD 1204
+ Project 1
 */
 .tooltip{
 	margin-bottom: 10px;
@@ -19,11 +19,13 @@ label.error{
 }
 
 #bCTA{
-	width: 290px;
+	/*
+width: 290px;
 	height: 200px;
-	/* background: url('../images/CTA.PNG'); */
+	background: url('../images/CTA.PNG');
 	background-size: 100%;
 	background-repeat: no-repeat;
+*/
 	position: relative;
 }
 
