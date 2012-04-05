@@ -35,7 +35,6 @@ $('#home').on('pageinit', function(){
 	    	},
 	    	complete: function(){
 	    		$('#contain ul').each(function(){
-	    			$(this).listview();
 	    			$(this).listview('refresh');
 	    		});
 			}
@@ -68,7 +67,6 @@ $('#home').on('pageinit', function(){
 	    	},
 	    	complete: function(){
 	    		$('#contain ul').each(function(){
-	    			$(this).listview();
 	    			$(this).listview('refresh');
 	    		});
 			}
@@ -80,25 +78,26 @@ $('#home').on('pageinit', function(){
 	    $.ajax({
 	    	url: 'xhr/combos.csv',
 	    	type: 'GET',
-	    	dataType: 'csv',
+	    	dataType: 'text',
 	    	beforeSend: function(){
 	    		$.mobile.changePage("#browser")
 	    	},
 	    	error: function(){
 	    		$.mobile.changePage("#home")
 	    	},
-	    	success: function(data){
+	    	success: function(d){
 	    		$('#display').empty();
-	    		$.each(data, function(id, info){
-					$('<ul/>', {html: info.champ + ': '}).appendTo('#display');
-					$.each(info, function(key, value){
-						$('<li/>', {html: key + ": " + value}).appendTo('#display ul:last');
-					});
-				});
+	    		var line = d.split('\n');
+		    	$(line).each(function(){
+		    		var row = this.split(',');
+		    		$('<li/>', {html: 'Style: ' + row[0]}).appendTo('#display');
+		    		$('#display li:last').append('<ul></ul>');
+		    		$('<li/>', {html: 'AD Carry: ' + row[1]}).appendTo('#display ul:last');
+		    		$('<li/>', {html: 'Support: ' + row[2]}).appendTo('#display ul:last');
+		    	});
 	    	},
 	    	complete: function(){
 	    		$('#contain ul').each(function(){
-	    			$(this).listview();
 	    			$(this).listview('refresh');
 	    		});
 			}
