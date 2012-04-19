@@ -1,0 +1,10 @@
+{
+  "env": {
+    "local": {
+      "db": "http://127.0.0.1:5984/lolhelper"
+    },
+    "cloudant": {
+      "db": "https://recarlin:wasd1496@recarlin.cloudant.com/lolhelper"
+    }
+  }
+}

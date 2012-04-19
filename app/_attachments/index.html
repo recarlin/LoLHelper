@@ -1,0 +1,223 @@
+<!doctype html>
+<!-- Russell Carlin -->
+<!-- ASD 1204 -->
+<!-- Project 3 -->
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<title>LoLHelper</title>
+	<meta name="description" content="Build your Champion roster, counters, and bottom lane combos with this simple application."/>
+	<meta name="keywords" content="League of Legends"/>
+	<meta name="robots" content="index, follow" />
+	
+	<meta name="HandheldFriendly" content="True"/>
+	<meta name="MobileOptimized" content="320"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta http-equiv="cleartype" content="on"/>
+	
+	<link rel="stylesheet" href="CSS/GuideHax.min.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" /> 
+	<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css"/>
+	<link rel="stylesheet" href="CSS/style.css"/>
+
+	<script src="js/libs/modernizr.custom.min.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="home" class="mPage">
+		<div data-role="header">
+			<h1>Home</h1>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div data-role="content">
+			<div id="bCTA" class="centerText">
+				<a id="addroster" href="#rosterAdd" data-role="button" title="Click to Start">Add to roster</a>
+				<a id="addcounter" href="#counterAdd" data-role="button" title="Click to Start">Add to counter picks</a>
+				<a id="addcombo" href="#comboAdd" data-role="button" title="Click to Start">Add to bottom combos</a>
+			</div>
+
+			<fieldset id="thumbnails" style="text-align:center" class="ui-grid-a">
+				
+				<div id="rosterGo" class="ui-block-a">
+					<a data-role="button" href="#">
+						<img src="Images/Icon_TQ.png"/>
+					</a>
+					<p>Your Roster</p>
+				</div>
+				<div id="countersGo" class="ui-block-b">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_MC.png"/>
+					</a>
+					<p>Counter Picks</p>
+				</div>
+				<div id="combosGo" class="ui-block-a">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_WoW.png"/>
+					</a>
+					<p>Bottom Combos</p>
+				</div>
+				<div id="timersGo" class="ui-block-b">
+					<a data-role="button" href="#browser">
+						<img src="Images/Icon_Sky.png"/>
+					</a>
+					<p>Jungle Timers</p>
+				</div>
+				
+			</fieldset>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="browser" class="browser">
+		<div data-role="header">
+			<h1>Browser</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div id='contain' data-role="content">
+			<ul id='display' data-role='listview'></ul>
+		</div>
+	</div>
+			
+	<div data-role="page" id="rosterAdd" class="mPage">
+		<div data-role="header" data-position="inline">
+			<h1>Roster Builder</h1>
+			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+
+		<div data-role="content">
+			<div class="centerText">
+				<h3>Fill out the champion information to add to your roster</h3>
+			</div>
+			<form action="" method="post" id="rosterForm">
+
+				<div data-role="fieldcontain">
+					<label for="rosterChampion">Champion:</label>
+					<select name="rosterChampion" id="rosterChampion" data-native-menu="false" class="required">
+					</select>
+					
+					<label for="lane">Lane:</label>
+					<select name="lane" id="lane" data-native-menu="false" class="required">
+						<option data-placeholder="true" value="">Select Lane:</option>
+						<option value="top">Top</option>
+						<option value="mid">Middle</option>
+						<option value="bot">Bottom</option>
+						<option value="jungle">Jungle</option>
+					</select>
+				
+					<label for="build">Build:</label>
+					<input name="build"id="build" type="text" class="required"/>
+					<div class="tooltip">Example: Boots, Wriggles, Wit's</div>
+					
+					<label for="runePage">Rune Page:</label>
+					<input name="runePage" id="runePage" type="range" min="1" max="20" class="required"/>
+					<div class="tooltip">Rune Page generally used for this champion.</div>
+					
+					<label for="masteries">Masteries:</label>
+					<input name="masteries"id="masteries" type="text" class="required"/>
+					<div class="tooltip">Example: 21-9-0</div>
+				</div>
+										
+				<input type="submit" id="submitRoster" value="Add to Roster"/>
+			</form>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="counterAdd" class="mPage">
+		<div data-role="header" data-position="inline">
+			<h1>Counter Builder</h1>
+			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+
+		<div data-role="content">
+			<div class="centerText">
+				<h3>Build your list of counters using the form below.</h3>
+			</div>
+			<form action="" method="post" id="counterForm">
+
+					<div data-role="fieldcontain">
+						<label for="counterChampion">Champion:</label>
+						<select name="counterChampion" id="counterChampion" data-native-menu="false" class="required">
+						</select>
+						<div class="tooltip">Champion being countered.</div>
+						
+						<label for="counters">Counter Champions:</label>
+						<select name="counters" id="counters" data-native-menu="false" class="required" multiple="multiple">
+						</select>
+						<div class="tooltip">Multiple counter champions can be selected.</div>
+						
+						<label for="statItem">Counter Stats and Items:</label>
+						<input name="statItem"id="statItem" type="text" class="required"/>
+						<div class="tooltip">Example: Armor, health, Frozen Heart.</div>
+					</div>
+										
+				<input type="submit" id="submitCounter" value="Add to Counters"/>
+			</form>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" id="comboAdd" class="mPage">
+		<div data-role="header" data-position="inline">
+			<h1>Combo Builder</h1>
+			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+
+		<div data-role="content">
+			<div class="centerText">
+				<h3>Add a bottom lane combo with the form below.</h3>
+			</div>
+			<form action="" method="post" id="comboForm">
+
+				<div data-role="fieldcontain">
+					
+					<label for="style">Style:</label>
+					<select name="style" id="style" data-native-menu="false" class="required">
+						<option data-placeholder="true" value="">Select Style:</option>
+						<option value="Agressive">Agressive</option>
+						<option value="Passive">Passive</option>
+					</select>
+					
+					<label for="ADCarry">AD Carry:</label>
+					<select name="ADCarry" id="ADCarry" data-native-menu="false" class="required">
+					</select>
+					
+					<label for="support">Support:</label>
+					<select name="support" id="support" data-native-menu="false" class="required">
+					</select>
+					
+				</div>
+				
+				<input type="submit" id="submitCombo" value="Add to Combos"/>
+			</form>
+		</div>
+		
+	</div>
+	
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<script src="JS/libs/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="http://localhost:5984/_utils/script/jquery.couch.js"></script>
+	<script src="JS/main.js" type="text/javascript"></script>
+</body>
+</html>
