@@ -88,6 +88,54 @@
 			<ul id='display' data-role='listview'></ul>
 		</div>
 	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="browseRoster" class="browser">
+		<div data-role="header">
+			<h1>Browser</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
+		</div>
+		<div class='logoImage'>
+			<img width='300px' id='logo' src='Images/GuideHax.png'/>
+		</div>
+
+		<div id='contain' data-role='content'>
+			<ul id='displayRoster' data-role='listview'></ul>
+		
+			<div id='editDelete'>
+				<a id='edit' href='' data-role='button' title='Edit'>Edit</a>
+				<a id='delete' href='' data-role='button' title='Delete'>Delete</a>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="browseCounter" class="browser">
+		<div data-role="header">
+			<h1>Browser</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div id='contain' data-role="content">
+			<ul id='display' data-role='listview'></ul>
+		</div>
+	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="browseCombo" class="browser">
+		<div data-role="header">
+			<h1>Browser</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
+		</div>
+		<div class="logoImage">
+			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+		</div>
+		
+		<div id='contain' data-role="content">
+			<ul id='display' data-role='listview'></ul>
+		</div>
+	</div>
 			
 	<div data-role="page" id="rosterAdd" class="mPage">
 		<div data-role="header" data-position="inline">
@@ -112,10 +160,10 @@
 					<label for="lane">Lane:</label>
 					<select name="lane" id="lane" data-native-menu="false" class="required">
 						<option data-placeholder="true" value="">Select Lane:</option>
-						<option value="top">Top</option>
-						<option value="mid">Middle</option>
-						<option value="bot">Bottom</option>
-						<option value="jungle">Jungle</option>
+						<option value="Top">Top</option>
+						<option value="Middle">Middle</option>
+						<option value="Bottom">Bottom</option>
+						<option value="Jungle">Jungle</option>
 					</select>
 				
 					<label for="build">Build:</label>

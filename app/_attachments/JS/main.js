@@ -71,7 +71,7 @@ $('#home').on('pageinit', function(){
 				alert("ERROR.");
 			}
 		});
-        return false;
+		return false;
 	});
 	
 	$('#countersGo').on('click', function(e){
@@ -131,7 +131,7 @@ $('#home').on('pageinit', function(){
 				alert("ERROR.");
 			}
 		});
-        return false;
+		return false;
 	});
 	
 	$('#combosGo').on('click', function(e){
@@ -191,6 +191,9 @@ $('#home').on('pageinit', function(){
 				alert("ERROR.");
 			}
 		});
-        return false;
+		return false;
 	});
+	
+	$
+	
 });
