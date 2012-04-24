@@ -22,7 +22,7 @@ $('#home').on('pageinit', function(){
 				$.mobile.changePage('#browser');
 			},
 			error: function(){
-				$.mobile.changePage('#home');
+				alert('Oh no!');
 			},
 			success: function(d){
 				$('#display').empty();
@@ -32,44 +32,6 @@ $('#home').on('pageinit', function(){
 						$('#display li:last').append('<a href="" id="' + this.value.itemID + '">' + this.value.name + '</a>');
 					});
 				});
-			},
-			complete: function(){
-				$('#contain ul').each(function(){
-					$(this).listview('refresh');
-				});
-			}
-		}); 
-	});
-	
-	$('#display').on('click', 'a' ,function(){
-		
-		$.ajax({
-			url: '_view/roster',
-			type: 'GET',
-			dataType: 'json',
-			beforeSend: function(){
-				$.mobile.changePage('#dataDisplay');
-			},
-			error: function(){
-				alert('Oh no!');
-			},
-			success: function(d){
-				var dataType = this.type;
-				$('#infoDisplay').empty();
-				if (dataType === 'roster'){
-					$('<li/>', {html: 'Lane: ' + this.value.lane}).appendTo('#display ul:last');
-					$('<li/>', {html: 'Build: ' + this.value.build}).appendTo('#display ul:last');
-					$('<li/>', {html: 'Runes: ' + this.value.runes}).appendTo('#display ul:last');
-					$('<li/>', {html: 'Masteries: ' + this.value.masteries}).appendTo('#display ul:last');
-				} else {
-					if (dataType === 'counter'){
-						$('<li/>', {html: 'Counter Champions: ' + this.value.champs}).appendTo('#display ul:last');
-						$('<li/>', {html: 'Counter Stats and Items: ' + this.value.stats}).appendTo('#display ul:last');
-					} else {
-						$('<li/>', {html: 'AD Carry: ' + this.value.ad_carry}).appendTo('#display ul:last');
-						$('<li/>', {html: 'Support: ' + this.value.support}).appendTo('#display ul:last');
-					};
-				}
 			},
 			complete: function(){
 				$('#contain ul').each(function(){
@@ -103,7 +65,7 @@ $('#home').on('pageinit', function(){
 				alert('Champion saved to roster!');
 			},
 			error: function() {
-				alert("ERROR.");
+				alert('Oh no!');
 			}
 		});
 		return false;
@@ -119,16 +81,14 @@ $('#home').on('pageinit', function(){
 				$.mobile.changePage('#browser');
 			},
 			error: function(){
-				$.mobile.changePage('#home');
+				alert('Oh no!');
 			},
 			success: function(d){
 				$('#display').empty();
-				$.each(d, function(id, counter){
-					$.each(counter, function(k, v){
-						$('<li/>', {html: this.value.name}).appendTo('#display');
-						$('#display li:last').append('<ul></ul>');
-						$('<li/>', {html: 'Counter Champions: ' + this.value.champs}).appendTo('#display ul:last');
-						$('<li/>', {html: 'Counter Stats and Items: ' + this.value.stats}).appendTo('#display ul:last');
+				$.each(d, function(id, data){
+					$.each(data, function(k, v){
+						$('<li/>').appendTo('#display');
+						$('#display li:last').append('<a href="" id="' + this.value.itemID + '">' + this.value.name + '</a>');
 					});
 				});
 			},
@@ -183,12 +143,10 @@ $('#home').on('pageinit', function(){
 			},
 			success: function(d){
 				$('#display').empty();
-				$.each(d, function(id, combo){
-					$.each(combo, function(k, v){
-						$('<li/>', {html: this.value.style}).appendTo('#display');
-						$('#display li:last').append('<ul></ul>');
-						$('<li/>', {html: 'AD Carry: ' + this.value.ad_carry}).appendTo('#display ul:last');
-						$('<li/>', {html: 'Support: ' + this.value.support}).appendTo('#display ul:last');
+				$.each(d, function(id, data){
+					$.each(data, function(k, v){
+						$('<li/>').appendTo('#display');
+						$('#display li:last').append('<a href="" id="' + this.value.itemID + '">' + this.value.style + '</a>');
 					});
 				});
 			},
@@ -227,6 +185,66 @@ $('#home').on('pageinit', function(){
 			}
 		});
 		return false;
+	});
+	
+	$('#display').on('click', 'a' ,function(){
+		getInfo = '/lolhelper/' + $(this).attr('id');
+		$.ajax({
+			url: getInfo,
+			type: 'GET',
+			dataType: 'json',
+			beforeSend: function(){
+				$.mobile.changePage('#dataDisplay');
+			},
+			error: function(){
+				alert('Oh no!');
+			},
+			success: function(d){
+				var dataType = d.type;
+				$('#infoDisplay').empty();
+				$('#storeID').empty();
+				if (dataType === 'roster'){
+					$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.Champion + '<h4>Lane:</h4><p>' + d.Lane + '<h4>Build:</h4><p>' + d.Build + '<h4>Rune Page:</h4><p>' + d.Runes +'<h4>Masteries:</h4><p>' + d.Masteries);
+					$('#storeID').text(d._id);
+				} else {
+					if (dataType === 'counter'){
+						$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.name + '<h4>Counter Champions:</h4><p>' + d.champs + '<h4>Counter Items and Stats:</h4><p>' + d.stats);
+					} else {
+						$('#infoDisplay').append('<h3>AD Carry:</h3><p>' + d.ad_carry + '<h4>Support:</h4><p>' + d.support);
+					};
+				};
+			}
+		}); 
+	});
+	
+	$('#delete').on('click', function(){
+		deleteThis = $('#storeID').text();
+		var r=confirm('Delete?')
+		if (r==false){
+			alert('Delete canceled!')
+		} else {
+			$db.openDoc(deleteThis, {
+	        	success: function(doc){
+		            $db.removeDoc(doc, {
+		                success: function(){
+		                    $.mobile.changePage("#home");
+		                    alert('Deleted!')
+		                },
+		                error: function(){
+		                    alert('Oh no!');
+		                }
+	        		});
+		        },
+		        error: function() {
+		            alert('Oh no!');
+		        }
+		    });
+		    return false;
+		};
+	});
+	
+	$('#edit').on('click', function(){
+		
 	});
 	
 });
