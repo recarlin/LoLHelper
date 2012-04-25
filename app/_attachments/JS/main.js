@@ -1,6 +1,6 @@
 // Russell Carlin
 // ASD 1204
-// Project 3
+// Project 4
 var championList = ["Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Blitzcrank", "Brand", "Caitlyn", "Cassiopeia", "Cho'gath", "Corki", "Dr. Mundo", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank", "Garen", "Gragas", "Graves", "Hecarim", "Heimerdinger", "Irelia", "Janna", "Jarvan IV", "Jax", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kennen", "Kog'Maw", "LeBlanc", "Lee Sin", "Leona", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi", "Miss Fortune", "Mordekaiser", "Morgana", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Nunu", "Olaf", "Orianna", "Pantheon", "Poppy", "Rammus", "Renekton", "Riven", "Rumble", "Ryze", "Sejuani", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Talon", "Taric", "Teemo", "Tristana", "Trundle", "Trydamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus", "Vayne", "Veigar", "Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xerath", "Xin Zhao", "Yorick", "Ziggs", "Zilean"];
 $('#home').on('pageinit', function(){
 	var $db = $.couch.db('lolhelper');
@@ -43,7 +43,7 @@ $('#home').on('pageinit', function(){
 	
 	$('#rosterAdd').on('pageinit', function(){
 		$('#rosterChampion').empty();
-		$('#rosterChampion').append('<option data-placeholder="true" value="">Select a Champion</option>');
+		$('#rosterChampion').append('<option data-placeholder="true" value="">Select Champion</option>');
 		$(championList).each(function(){
 			$('#rosterChampion').append('<option value="' + this + '">' + this + '</option>');
 		});
@@ -52,28 +52,36 @@ $('#home').on('pageinit', function(){
 	
 	$('#submitRoster').on('click', function(e){
 		e.preventDefault();
-		var info = {};
+		var info = {},
+			gotID = $('#rosterID').text();
+		
+		if (gotID !== ''){
+			info._id = $('#rosterID').text();
+			info._rev = $('#rosterREV').text();
+		};
 		info.Champion = $('#rosterChampion').val();
 		info.Lane = $('#lane').val();
 		info.Build = $('#build').val();
 		info.Runes = $('#runePage').val();
 		info.Masteries = $('#masteries').val();
 		info.type = 'roster';
-		if ($('#rosterID') !== ''){
-			info._id = $('#rosterID').text();
-			info._rev = $('#rosterREV').text();
-		} else {
-			return false;
-		};
+	
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
-				alert('Champion saved to roster!');
+				alert('Champion saved!');
+				$('#rosterID, #rosterREV').empty();
+				$('#rosterField input').val('');
+				$('#rosterField select').val('');
+				$('#rosterForm select').each(function(){
+					$(this).selectmenu('refresh', true);
+				});
 			},
 			error: function() {
 				alert('Oh no!');
 			}
 		});
+		
 		return false;
 	});
 	
@@ -118,21 +126,28 @@ $('#home').on('pageinit', function(){
 	
 	$('#submitCounter').on('click', function(e){
 		e.preventDefault();
-		var info = {};
+		var info = {},
+			gotID = $('#counterID').text();
+		
+		if (gotID !== ''){
+			info._id = $('#counterID').text();
+			info._rev = $('#counterREV').text();
+		};
 		info.name = $('#counterChampion').val();
 		info.champs = $('#counters').val();
 		info.stats = $('#statItem').val();
 		info.type = 'counter';
-		if ($('#counterID') !== ''){
-			info._id = $('#counterID').text();
-			info._rev = $('#counterREV').text();
-		} else {
-			return false;
-		};
+		
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
-				alert('Counter saved!');
+				alert('Counters saved!');
+				$('#counterID, #counterREV').empty();
+				$('#counterField input').val('');
+				$('#counterField select').val('');
+				$('#counterForm select').each(function(){
+					$(this).selectmenu('refresh', true);
+				});
 			},
 			error: function() {
 				alert("ERROR.");
@@ -158,7 +173,7 @@ $('#home').on('pageinit', function(){
 				$.each(d, function(id, data){
 					$.each(data, function(k, v){
 						$('<li/>').appendTo('#display');
-						$('#display li:last').append('<a href="" id="' + this.value.itemID + '">' + this.value.style + '</a>');
+						$('#display li:last').append('<a href="" id="' + this.value.itemID + '">' + this.value.ad_carry + ' and ' + this.value.support + '</a>');
 					});
 				});
 			},
@@ -182,23 +197,29 @@ $('#home').on('pageinit', function(){
 	
 	$('#submitCombo').on('click', function(e){
 		e.preventDefault();
-		var info = {};
+		var info = {},
+			gotID = $('#comboID').text();
+		
+		if (gotID !== ''){
+			info._id = $('#comboID').text();
+			info._rev = $('#comboREV').text();
+		};
 		info.style = $('#style').val();
 		info.ad_carry = $('#ADCarry').val();
 		info.support = $('#support').val();
+		info.strat = $('#strat').val();
 		info.type = 'combo';
-		if ($('#comboID') !== ''){
-			info._id = $('#comboID').text();
-			info._rev = $('#comboREV').text();
-		} else {
-			return false;
-		};
+		
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
 				alert('Combo saved!');
-				$('#comboID').empty();
-				$('#comboREV').empty();
+				$('#comboID, #comboREV').empty();
+				$('#comboField input').val('');
+				$('#comboField select').val('');
+				$('#counterForm select').each(function(){
+					$(this).selectmenu('refresh', true);
+				});
 			},
 			error: function() {
 				alert('Oh no!');
@@ -224,14 +245,14 @@ $('#home').on('pageinit', function(){
 				$('#infoDisplay').empty();
 				$('#storeID').empty();
 				if (dataType === 'roster'){
-					$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.Champion + '<h4>Lane:</h4><p>' + d.Lane + '<h4>Build:</h4><p>' + d.Build + '<h4>Rune Page:</h4><p>' + d.Runes +'<h4>Masteries:</h4><p>' + d.Masteries);
+					$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.Champion + '</p><h4>Lane:</h4><p>' + d.Lane + '</p><h4>Build:</h4><p>' + d.Build + '</p><h4>Rune Page:</h4><p>' + d.Runes +'</p><h4>Masteries:</h4><p>' + d.Masteries + '</p>');
 					$('#storeID').text(d._id);
 				} else {
 					if (dataType === 'counter'){
-						$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.name + '<h4>Counter Champions:</h4><p>' + d.champs + '<h4>Counter Items and Stats:</h4><p>' + d.stats);
+						$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.name + '</p><h4>Counter Champions:</h4><p>' + d.champs + '</p><h4>Counter Items and Stats:</h4><p>' + d.stats + '</p>');
 						$('#storeID').text(d._id);
 					} else {
-						$('#infoDisplay').append('<h3>AD Carry:</h3><p>' + d.ad_carry + '<h4>Support:</h4><p>' + d.support);
+						$('#infoDisplay').append('<h3>' + d.ad_carry + ' and ' + d.support + '</h3><h4>Style:</h4><p>' + d.style + '</p><h4>Strategy:</h4><p>' + d.strat + '</p>');
 						$('#storeID').text(d._id);
 					};
 				};
@@ -310,12 +331,14 @@ $('#home').on('pageinit', function(){
 					} else {
 						var i = doc.style,
 							j = doc.ad_carry,
-							k = doc.support;
+							k = doc.support,
+							l = doc.strat;
 						$.mobile.changePage("#comboAdd");
 	
 						$('#style').val( i );
 						$('#ADCarry').val( j );
 						$('#support').val( k );
+						$('#strat').val( l );
 						$('#comboForm select').each(function(){
 							$(this).selectmenu('refresh', true);
 						});
@@ -329,4 +352,5 @@ $('#home').on('pageinit', function(){
 			}
 		});
 	});
+	
 });

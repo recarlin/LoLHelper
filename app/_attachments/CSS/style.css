@@ -18,20 +18,33 @@ label.error{
 	color: red;
 }
 
-#bCTA{
-	/*
-width: 290px;
+#CTA{
+	width: 290px;
 	height: 200px;
 	background: url('../images/CTA.PNG');
 	background-size: 100%;
 	background-repeat: no-repeat;
-*/
 	position: relative;
 }
 
-#startButton{
-	position: absolute;
-	bottom: 5px;
-	left: 5px;
+#addroster, #addcounter, #addcombo{
 	width: 270px;
+}
+
+#addroster{
+	position: absolute;
+	bottom: 125px;
+	left: 5px;
+}
+
+#addcounter{
+	position: absolute;
+	bottom: 75px;
+	left: 5px;
+}
+
+#addcombo{
+	position: absolute;
+	bottom: 25px;
+	left: 5px;
 }

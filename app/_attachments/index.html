@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- Russell Carlin -->
 <!-- ASD 1204 -->
-<!-- Project 3 -->
+<!-- Project 4 -->
 
 <html lang="en">
 <head>
@@ -32,11 +32,11 @@
 			<h1>Home</h1>
 		</div>
 		<div class="logoImage">
-			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+			<img width="300px" id="logo" src="Images/LoLHelper.png"/>
 		</div>
 		
 		<div data-role="content">
-			<div id="bCTA" class="centerText">
+			<div id="CTA" class="centerText">
 				<a id="addroster" href="#rosterAdd" data-role="button" title="Click to Start">Add to roster</a>
 				<a id="addcounter" href="#counterAdd" data-role="button" title="Click to Start">Add to counter picks</a>
 				<a id="addcombo" href="#comboAdd" data-role="button" title="Click to Start">Add to bottom combos</a>
@@ -46,25 +46,25 @@
 				
 				<div id="rosterGo" class="ui-block-a">
 					<a data-role="button" href="#">
-						<img src="Images/Icon_TQ.png"/>
+						<img src="Images/roster.png"/>
 					</a>
 					<p>Your Roster</p>
 				</div>
 				<div id="countersGo" class="ui-block-b">
 					<a data-role="button" href="#browser">
-						<img src="Images/Icon_MC.png"/>
+						<img src="Images/counters.png"/>
 					</a>
 					<p>Counter Picks</p>
 				</div>
 				<div id="combosGo" class="ui-block-a">
 					<a data-role="button" href="#browser">
-						<img src="Images/Icon_WoW.png"/>
+						<img src="Images/combos.png"/>
 					</a>
 					<p>Bottom Combos</p>
 				</div>
 				<div id="timersGo" class="ui-block-b">
-					<a data-role="button" href="#browser">
-						<img src="Images/Icon_Sky.png"/>
+					<a data-role="button" href="#timers">
+						<img src="Images/timers.png"/>
 					</a>
 					<p>Jungle Timers</p>
 				</div>
@@ -80,7 +80,7 @@
 			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
 		</div>
 		<div class="logoImage">
-			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+			<img width="300px" id="logo" src="Images/LoLHelper.png"/>
 		</div>
 		
 		<div id='contain' data-role="content">
@@ -94,7 +94,7 @@
 			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
 		</div>
 		<div class='logoImage'>
-			<img width='300px' id='logo' src='Images/GuideHax.png'/>
+			<img width='300px' id='logo' src='Images/LoLHelper.png'/>
 		</div>
 
 		<div id='contain' data-role='content'>
@@ -107,6 +107,18 @@
 		</div>
 		
 	</div>
+	
+	<div data-role="page" data-add-back-btn="true" id="timers" class="browser">
+		<div data-role="header">
+			<h1>Timers</h1>
+			<a data-role="button" data-direction="reverse" data-icon="star" data-iconpos="right" class="ui-btn-right" href="#home">Home</a>
+		</div>
+		<div class='logoImage'>
+			<img width='300px' id='logo' src='Images/LoLHelper.png'/>
+			<h1>PAGE UNDER CONSTRUCTION!</h1>
+		</div>
+		
+	</div>
 			
 	<div data-role="page" id="rosterAdd" class="mPage">
 		<div data-role="header" data-position="inline">
@@ -114,7 +126,7 @@
 			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
 		</div>
 		<div class="logoImage">
-			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+			<img width="300px" id="logo" src="Images/LoLHelper.png"/>
 		</div>
 
 		<div data-role="content">
@@ -125,7 +137,7 @@
 			<p id='rosterREV' hidden='hidden'></p>
 			<form action="" method="post" id="rosterForm">
 
-				<div data-role="fieldcontain">
+				<div id='rosterField' data-role="fieldcontain">
 					<label for="rosterChampion">Champion:</label>
 					<select name="rosterChampion" id="rosterChampion" data-native-menu="false" class="required">
 					</select>
@@ -152,7 +164,7 @@
 					<div class="tooltip">Example: 21-9-0</div>
 				</div>
 										
-				<input type="submit" id="submitRoster" value="Add to Roster"/>
+				<input type="submit" id="submitRoster" value="Save Champion"/>
 			</form>
 		</div>
 		
@@ -164,7 +176,7 @@
 			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
 		</div>
 		<div class="logoImage">
-			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+			<img width="300px" id="logo" src="Images/LoLHelper.png"/>
 		</div>
 
 		<div data-role="content">
@@ -175,7 +187,7 @@
 			<p id='counterREV' hidden='hidden'></p>
 			<form action="" method="post" id="counterForm">
 
-				<div data-role="fieldcontain">
+				<div id='counterField' data-role="fieldcontain">
 					<label for="counterChampion">Champion:</label>
 					<select name="counterChampion" id="counterChampion" data-native-menu="false" class="required">
 					</select>
@@ -191,7 +203,7 @@
 					<div class="tooltip">Example: Armor, health, Frozen Heart.</div>
 				</div>
 										
-				<input type="submit" id="submitCounter" value="Add to Counters"/>
+				<input type="submit" id="submitCounter" value="Save Counters"/>
 			</form>
 		</div>
 		
@@ -203,7 +215,7 @@
 			<a data-role="button" class="ui-btn-right" href="#home" data-direction="reverse" data-icon="home">Home</a>
 		</div>
 		<div class="logoImage">
-			<img width="300px" id="logo" src="Images/GuideHax.png"/>
+			<img width="300px" id="logo" src="Images/LoLHelper.png"/>
 		</div>
 
 		<div data-role="content">
@@ -214,7 +226,7 @@
 			<p id='comboREV' hidden='hidden'></p>
 			<form action="" method="post" id="comboForm">
 
-				<div data-role="fieldcontain">
+				<div id='comboField' data-role="fieldcontain">
 					
 					<label for="style">Style:</label>
 					<select name="style" id="style" data-native-menu="false" class="required">
@@ -231,9 +243,13 @@
 					<select name="support" id="support" data-native-menu="false" class="required">
 					</select>
 					
+					<label for="strat">Strategy:</label>
+					<input name="strat"id="strat" type="text" class="required"/>
+					<div class="tooltip">Example: Right-click them until they disappear!</div>
+					
 				</div>
 				
-				<input type="submit" id="submitCombo" value="Add to Combos"/>
+				<input type="submit" id="submitCombo" value="Save Combo"/>
 			</form>
 		</div>
 		

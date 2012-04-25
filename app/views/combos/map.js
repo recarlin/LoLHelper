@@ -4,7 +4,8 @@ function (doc){
 			"itemID": doc._id,
 			"style": doc.style,
 			"ad_carry": doc.ad_carry,
-			"support": doc.support
+			"support": doc.support,
+			"strat": doc.strat
 		});
 	}
 };
