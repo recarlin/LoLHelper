@@ -19,8 +19,7 @@
 	<meta http-equiv="cleartype" content="on"/>
 	
 	<link rel="stylesheet" href="CSS/GuideHax.min.css"/>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" /> 
-	<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css"/>
 	<link rel="stylesheet" href="CSS/style.css"/>
 
 	<script src="js/libs/modernizr.custom.min.js"></script>
@@ -122,6 +121,8 @@
 			<div class="centerText">
 				<h3>Fill out the champion information to add to your roster</h3>
 			</div>
+			<p id='rosterID' hidden='hidden'></p>
+			<p id='rosterREV' hidden='hidden'></p>
 			<form action="" method="post" id="rosterForm">
 
 				<div data-role="fieldcontain">
@@ -170,23 +171,25 @@
 			<div class="centerText">
 				<h3>Build your list of counters using the form below.</h3>
 			</div>
+			<p id='counterID' hidden='hidden'></p>
+			<p id='counterREV' hidden='hidden'></p>
 			<form action="" method="post" id="counterForm">
 
-					<div data-role="fieldcontain">
-						<label for="counterChampion">Champion:</label>
-						<select name="counterChampion" id="counterChampion" data-native-menu="false" class="required">
-						</select>
-						<div class="tooltip">Champion being countered.</div>
-						
-						<label for="counters">Counter Champions:</label>
-						<select name="counters" id="counters" data-native-menu="false" class="required" multiple="multiple">
-						</select>
-						<div class="tooltip">Multiple counter champions can be selected.</div>
-						
-						<label for="statItem">Counter Stats and Items:</label>
-						<input name="statItem"id="statItem" type="text" class="required"/>
-						<div class="tooltip">Example: Armor, health, Frozen Heart.</div>
-					</div>
+				<div data-role="fieldcontain">
+					<label for="counterChampion">Champion:</label>
+					<select name="counterChampion" id="counterChampion" data-native-menu="false" class="required">
+					</select>
+					<div class="tooltip">Champion being countered.</div>
+					
+					<label for="counters">Counter Champions:</label>
+					<select name="counters" id="counters" data-native-menu="false" class="required" multiple="multiple">
+					</select>
+					<div class="tooltip">Multiple counter champions can be selected.</div>
+					
+					<label for="statItem">Counter Stats and Items:</label>
+					<input name="statItem"id="statItem" type="text" class="required"/>
+					<div class="tooltip">Example: Armor, health, Frozen Heart.</div>
+				</div>
 										
 				<input type="submit" id="submitCounter" value="Add to Counters"/>
 			</form>
@@ -207,6 +210,8 @@
 			<div class="centerText">
 				<h3>Add a bottom lane combo with the form below.</h3>
 			</div>
+			<p id='comboID' hidden='hidden'></p>
+			<p id='comboREV' hidden='hidden'></p>
 			<form action="" method="post" id="comboForm">
 
 				<div data-role="fieldcontain">
@@ -214,7 +219,7 @@
 					<label for="style">Style:</label>
 					<select name="style" id="style" data-native-menu="false" class="required">
 						<option data-placeholder="true" value="">Select Style:</option>
-						<option value="Agressive">Agressive</option>
+						<option value="Aggressive">Aggressive</option>
 						<option value="Passive">Passive</option>
 					</select>
 					

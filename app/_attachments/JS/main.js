@@ -59,6 +59,12 @@ $('#home').on('pageinit', function(){
 		info.Runes = $('#runePage').val();
 		info.Masteries = $('#masteries').val();
 		info.type = 'roster';
+		if ($('#rosterID') !== ''){
+			info._id = $('#rosterID').text();
+			info._rev = $('#rosterREV').text();
+		} else {
+			return false;
+		};
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
@@ -117,6 +123,12 @@ $('#home').on('pageinit', function(){
 		info.champs = $('#counters').val();
 		info.stats = $('#statItem').val();
 		info.type = 'counter';
+		if ($('#counterID') !== ''){
+			info._id = $('#counterID').text();
+			info._rev = $('#counterREV').text();
+		} else {
+			return false;
+		};
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
@@ -175,20 +187,28 @@ $('#home').on('pageinit', function(){
 		info.ad_carry = $('#ADCarry').val();
 		info.support = $('#support').val();
 		info.type = 'combo';
+		if ($('#comboID') !== ''){
+			info._id = $('#comboID').text();
+			info._rev = $('#comboREV').text();
+		} else {
+			return false;
+		};
 		$db.saveDoc(info, {
 			success: function() {
 				$.mobile.changePage('#home', 'slidedown');
 				alert('Combo saved!');
+				$('#comboID').empty();
+				$('#comboREV').empty();
 			},
 			error: function() {
-				alert("ERROR.");
+				alert('Oh no!');
 			}
 		});
 		return false;
 	});
 	
 	$('#display').on('click', 'a' ,function(){
-		getInfo = '/lolhelper/' + $(this).attr('id');
+		var getInfo = '/lolhelper/' + $(this).attr('id');
 		$.ajax({
 			url: getInfo,
 			type: 'GET',
@@ -209,8 +229,10 @@ $('#home').on('pageinit', function(){
 				} else {
 					if (dataType === 'counter'){
 						$('#infoDisplay').append('<h3>Champion:</h3><p>' + d.name + '<h4>Counter Champions:</h4><p>' + d.champs + '<h4>Counter Items and Stats:</h4><p>' + d.stats);
+						$('#storeID').text(d._id);
 					} else {
 						$('#infoDisplay').append('<h3>AD Carry:</h3><p>' + d.ad_carry + '<h4>Support:</h4><p>' + d.support);
+						$('#storeID').text(d._id);
 					};
 				};
 			}
@@ -218,17 +240,17 @@ $('#home').on('pageinit', function(){
 	});
 	
 	$('#delete').on('click', function(){
-		deleteThis = $('#storeID').text();
-		var r=confirm('Delete?')
-		if (r==false){
-			alert('Delete canceled!')
+		var	deleteThis = $('#storeID').text(),
+			r = confirm('Delete?');
+		if (r === false){
+			alert('Delete canceled!');
 		} else {
 			$db.openDoc(deleteThis, {
 	        	success: function(doc){
 		            $db.removeDoc(doc, {
 		                success: function(){
 		                    $.mobile.changePage("#home");
-		                    alert('Deleted!')
+		                    alert('Deleted!');
 		                },
 		                error: function(){
 		                    alert('Oh no!');
@@ -244,7 +266,67 @@ $('#home').on('pageinit', function(){
 	});
 	
 	$('#edit').on('click', function(){
-		
-	});
+		var	deleteThis = $('#storeID').text();
+		$db.openDoc(deleteThis, {
+			success: function(doc){
+				if (doc.type === 'roster'){
+					var a = doc.Champion,
+						b = doc.Lane,
+						c = doc.Build,
+						d = doc.Runes,
+						e = doc.Masteries;
+						
+					$.mobile.changePage("#rosterAdd");
+
+					
+					$('#rosterChampion').val( a );
+					$('#lane').val( b );
+					$('#build').val( c );
+					$('#runePage').val( d );
+					$('#masteries').val( e );
+					$('#rosterForm select').each(function(){
+						$(this).selectmenu('refresh', true);
+					});
+					$('#rosterID').text(deleteThis);
+					$('#rosterREV').text(doc._rev);
+				} else {
+					if (doc.type === 'counter'){
+						var f = doc.name,
+							g = doc.champs,
+							h = doc.stats;
+						
+						$.mobile.changePage("#counterAdd");
+						
+						$('#counterChampion').val( f );
+						$.each(g, function(){
+							$('#counters option:contains("' + this + '")').attr('selected', 'selected');
+						});
+						$('#statItem').val( h );
+						$('#counterForm select').each(function(){
+							$(this).selectmenu('refresh', true);
+						});
+						$('#counterID').text(deleteThis);
+						$('#counterREV').text(doc._rev);
+					} else {
+						var i = doc.style,
+							j = doc.ad_carry,
+							k = doc.support;
+						$.mobile.changePage("#comboAdd");
 	
+						$('#style').val( i );
+						$('#ADCarry').val( j );
+						$('#support').val( k );
+						$('#comboForm select').each(function(){
+							$(this).selectmenu('refresh', true);
+						});
+						$('#comboID').text(deleteThis);
+						$('#comboREV').text(doc._rev);
+					};
+				};
+			},
+			error: function(){
+				alert('Oh no!');
+			}
+		});
+	});
 });
