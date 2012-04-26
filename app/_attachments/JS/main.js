@@ -115,7 +115,7 @@ $('#home').on('pageinit', function(){
 	});
 	
 	$('#counterAdd').on('pageinit', function(){
-		$('#counterChampion, #counters').empty().append('<option data-placeholder="true" value="">Select a Champion</option>');
+		$('#counterChampion, #counters').empty().append('<option data-placeholder="true" value="">Select Champion</option>');
 		$(championList).each(function(){
 			$('#counterChampion, #counters').append('<option value="' + this + '">' + this + '</option>');
 		});
@@ -145,6 +145,7 @@ $('#home').on('pageinit', function(){
 				$('#counterID, #counterREV').empty();
 				$('#counterField input').val('');
 				$('#counterField select').val('');
+				$('#counters option:contains("Select Champion")').removeAttr('selected');
 				$('#counterForm select').each(function(){
 					$(this).selectmenu('refresh', true);
 				});
@@ -217,7 +218,7 @@ $('#home').on('pageinit', function(){
 				$('#comboID, #comboREV').empty();
 				$('#comboField input').val('');
 				$('#comboField select').val('');
-				$('#counterForm select').each(function(){
+				$('#comboForm select').each(function(){
 					$(this).selectmenu('refresh', true);
 				});
 			},
@@ -318,6 +319,8 @@ $('#home').on('pageinit', function(){
 						
 						$.mobile.changePage("#counterAdd");
 						
+						$('#counters').val('');
+						$('#counters option:contains("Select Champion")').removeAttr('selected');
 						$('#counterChampion').val( f );
 						$.each(g, function(){
 							$('#counters option:contains("' + this + '")').attr('selected', 'selected');
