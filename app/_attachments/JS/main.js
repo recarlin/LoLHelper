@@ -229,6 +229,11 @@ $('#home').on('pageinit', function(){
 		return false;
 	});
 	
+	$('#timersGo').on('click', function(e){
+		e.preventDefault();
+		$.mobile.changePage('#timers');
+	});
+	
 	$('#display').on('click', 'a' ,function(){
 		var getInfo = '/lolhelper/' + $(this).attr('id');
 		$.ajax({
